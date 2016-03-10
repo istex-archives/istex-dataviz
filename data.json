@@ -1,0 +1,85 @@
+{
+    "title": "Chiffres clés de la plateforme ISTEX",
+    "collectionName": "istex",
+    "display": {
+        "fields": {
+            "year": "Année",
+            "nbDocument": "Nombre de documents"
+        }
+    },
+    "documentFields": {
+        "$year": {
+            "visible": true,
+            "label": "Années",
+            "get": "content.json.year",
+            "cast": "number"
+        },
+        "$nbDocument": {
+            "visible": true,
+            "label": "Nombre de documents",
+            "get": "content.json.nbDocument",
+            "cast": "number"
+        },
+        "$text": {
+            "get": "content.json.year"
+        }
+    },
+    "corpusFields": {
+        "$years": {
+            "default": 0,
+            "$?": "local:///compute.json?operator=distinct&field=year&itemsPerPage=",
+            "parseJSON": true,
+            "select": ".data ._id",
+            "foreach": {
+                "cast": "number"
+            }
+        },
+        "$beginYear": {
+            "get": "years",
+            "min": true
+        },
+        "$endYear": {
+            "get": "years",
+            "max": true
+        },
+        "$period": {
+            "visible": true,
+            "label": "Années couvertes",
+            "template": "{{beginYear}}-{{endYear}}",
+            "icon": "calendar"
+        },
+        "$nbDocument": {
+            "visible": true,
+            "label": "Nombre de documents",
+            "icon": "book",
+            "$?": "local:///compute.json?operator=total&field=nbDocument",
+            "parseJSON": true,
+            "get": "data.0.value"
+        }
+    },
+    "pages": {
+        "index": {
+            "title": "Les chiffres phares",
+            "description": "Les chiffres clés les plus importants de la plateforme ISTEX",
+            "help": "Ces tableaux de bords montrent quelques chiffres clés des données hébergées dans la plateforme ISTEX. Ces graphiques dynamiques sont le reflet exacte des données que l'Enseignement Supérieur et la Recherche Française peuvent télécharger par exemple avec l'[API ISTEX](https://api.istex.fr) (ouverte actuellement en béta-test)."
+        }
+    },
+    "dashboard": {
+        "charts": [
+        {
+            "title": "Nb documents par années",
+            "help": "Nombre de documents distribués sur les années de publication des documents ISTEX. Nous pouvons observer deux pics en ... et ... qui ... Les documents publiés avant 14XX et après 2014 reflètent des erreurs dans les métadonnées et feront l'objet d'un travail de curation.",
+            "fields": [
+                "nbDocument",
+                "year"
+            ],
+            "type": "histogram",
+            "operator": "sum_field1_by_field2",
+            "title": "Nombre de documents par années de publication",
+            "color": "#bdd7e7",
+            "size": {
+               "height": 200
+            }
+        }]
+    }
+}
