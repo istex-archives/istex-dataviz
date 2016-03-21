@@ -6,7 +6,7 @@ Application web basée sur [ezVis](https://github.com/madec-project/ezvis) expos
 
 ```shell
 git clone https://github.com/madec-project/ezvis.git
-docker build -t inistcnrs/ezvis --build-arg http_proxy --build-arg https_proxy ezvis/Docker .
+docker build -t inistcnrs/ezvis --build-arg http_proxy --build-arg https_proxy ezvis/Docker
 
 git clone https://github.com/istex/istex-dataviz.git
 export EZVIS_DATA_DIR=$(pwd)/istex-dataviz/data
