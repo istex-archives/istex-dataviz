@@ -2,7 +2,7 @@
 
 Application web basée sur [ezVis](https://github.com/madec-project/ezvis) exposant des chiffres clés sur les données de la plateforme ISTEX
 
-## Installation
+## Installation et usage
 
 ```shell
 git clone https://github.com/madec-project/ezvis.git
@@ -15,11 +15,4 @@ cd ./istex-dataviz/
 docker-compose up -d
 ```
 
-## Usage
-
-```
-npm install -g ezvis
-ezvis data
-```
-
-Ensuite naviguer sur http://127.0.0.1:3000
+Ensuite naviguer sur http://127.0.0.1:45221
