@@ -68,7 +68,7 @@
         "charts": [
         {
             "title": "Nb documents par années",
-            "help": "Nombre de documents distribués sur les années de publication des documents ISTEX. Nous pouvons observer deux pics en ... et ... qui ... Les documents publiés avant 14XX et après 2014 reflètent des erreurs dans les métadonnées et feront l'objet d'un travail de curation.",
+            "help": "Nombre de documents distribués sur les années de publication des documents ISTEX. Les documents publiés avant 1400 et après 2014 reflètent des erreurs dans les métadonnées et feront l'objet d'un travail de curation.",
             "fields": [
                 "nbDocument",
                 "year"
